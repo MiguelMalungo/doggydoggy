@@ -24,9 +24,9 @@ function DogDetails() {
           <div className="name-row">
             <h2>{dog.name}</h2>
           </div>
-          <div className="photo-row">
+          <div className="photo-button-container">
             <img src={dog.img} alt={dog.name} className="dog-image" />
-            <Link to="/catalog">  {/* Add the Link component */}
+            <Link to="/catalog" className="back-button-link"> 
               <button className="button">View Our Dogs</button>
             </Link>
           </div>
