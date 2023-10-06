@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './styles.css';
+
 function Catalog() {
   const [dogs, setDogs] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://api.jsonbin.io/v3/b/650a7ebece39bb6dce7f5683');
+        const response = await fetch('https://api.jsonbin.io/v3/b/651fbed554105e766fbe7faa');
         const data = await response.json();
         setDogs(data.record);
       } catch (error) {
@@ -24,7 +25,10 @@ function Catalog() {
       <ul>
         {dogs.map((dog, index) => (
           <li key={index}>
-            <Link to={`/dog/${index}`}>{dog.name}</Link>
+            <Link to={`/dog/${index}`} className="dog-link">
+              <img src={dog.img} alt={dog.name} className="dog-thumbnail" />
+              <p>{dog.name}</p>
+            </Link>
           </li>
         ))}
       </ul>

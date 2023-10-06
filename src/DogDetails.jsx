@@ -5,13 +5,25 @@ import './styles.css';
 function DogDetails() {
   const { dogId } = useParams();
   const [dog, setDog] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("https://api.jsonbin.io/v3/b/650a7ebece39bb6dce7f5683");
-      const data = await response.json();
-      const selectedDog = data.record[dogId];
-      setDog(selectedDog);
+      try {
+        setLoading(true);
+        const response = await fetch("https://api.jsonbin.io/v3/b/651fbed554105e766fbe7faa");
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        const selectedDog = data.record[parseInt(dogId, 10)];
+        setDog(selectedDog);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
     };
     
     fetchData();
@@ -19,6 +31,8 @@ function DogDetails() {
 
   return (
     <div className="dog-details-container">
+      {loading && <p>Loading...</p>}
+      {error && <p>Error: {error.message}</p>}
       {dog && (
         <>
           <div className="name-row">

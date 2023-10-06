@@ -52,8 +52,8 @@ body {
 /* Media Query for Desktop Screens */
 @media screen and (min-width: 768px) { /* 768px is a commonly used breakpoint for tablets/desktops */
   .video-row {
-    width: 33%; /* On desktops, limit the container to half the width */
-    height: 33vh; /* This limits the video's height to half the viewport height */
+    width: 30%; /* On desktops, limit the container to half the width */
+    height: 30vh; /* This limits the video's height to half the viewport height */
     max-width: 700px; /* An arbitrary max width for very large screens */
   }
 
@@ -104,6 +104,28 @@ a {
 a:hover {
   color: red;
 }
+
+
+.dog-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+}
+
+.dog-thumbnail {
+  width: 100px; 
+  height: 100px;
+  object-fit: cover; 
+  border-radius: 50%; 
+  margin-bottom: 10px; 
+}
+
+.dog-link:hover {
+  color: red;
+}
+
 
 /* Desktop styles */
 @media (min-width: 768px) {  
